@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <h1>{{ num1 }} by {{ num2 }} matrix</h1>
+  <table>
+    {% for i in range (num1) %}
+    <tr>
+      {% for j in range(num2) %}
+      <td class="color{{ (i+j)%2+1 }}"></td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
