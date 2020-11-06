@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <h1>All the Users</h1>
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email-ID</th>
+      <th>Age</th>
+    </tr>
+    {% for userObj in allUsers %}
+    <tr>
+      <td>{{ userObj.id }}</td>
+      <td>{{ userObj.first_name}} {{userObj.last_name}}</td>
+      <td>{{ userObj.email_address }}</td>
+      <td>{{userObj.age}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <form action="/adduser" method="post">
+    {% csrf_token %}
+    <label for="fname">First name:</label>
+    <input type="text" id="fname" name="fname" value="">
+    <label for="lname">Last name:</label>
+    <input type="text" id="lname" name="lname" value=""><br><br>
+    <label for="lname">Email-ID:</label>
+    <input type="text" id="" name="email" value="">
+    <label for="lname">Age:</label>
+    <input type="text" id="lname" name="age" value=""><br><br>
+    <input type="submit" value="Add user">
+  </form>
+
+</body>
+</html>
