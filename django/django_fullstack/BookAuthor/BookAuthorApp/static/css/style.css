@@ -1,0 +1,27 @@
+body {
+  width: 800px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 400px;
+  margin: 60px 60px 60px 160px;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.formData {
+  margin: 40px;
+}
+
+.mainContent {
+  display: flex;
+  justify-content: space-between;
+}

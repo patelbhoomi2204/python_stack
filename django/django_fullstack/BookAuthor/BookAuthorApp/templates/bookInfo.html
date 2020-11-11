@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>{{oneBook.title}}</h1>
+  <h3>ID: {{oneBook.id}}</h3>
+  <p>Description: {{oneBook.desc}}</p>
+  <p>Authors:</p>
+  <ul>
+  {% for bookWriter in oneBook.writer.all %}
+    <li>{{bookWriter.first_name}} {{bookWriter.last_name}}</li>
+  {% endfor %}
+  </ul>
+  <form action="/bookAuthor/{{oneBook.id}}" method="POST">
+    {% csrf_token %}
+    <p>Select an Author</p>
+    <select name="Author" id="">
+      {% for bookAuthor in authors %}
+      <option value="{{bookAuthor.id}}">{{bookAuthor.first_name}} {{bookAuthor.last_name}}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="Add Author">
+  </form>
+
+</body>
+</html>

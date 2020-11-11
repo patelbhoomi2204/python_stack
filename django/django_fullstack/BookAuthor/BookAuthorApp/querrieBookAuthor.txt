@@ -1,0 +1,72 @@
+ book1 = Book.objects.create(title="C Sharp", desc="Available in several electronic forms.")
+
+ book2 = Book.objects.create(title="Java", desc="This book is an introduction to programming in Oracle's Java™ programming language, a widely used programming language and software platform")
+
+ book3 = Book.objects.create(title="Python", desc=" The best books for learning Python")
+
+ book4 = Book.objects.create(title="PHP", desc="The best books for learning PHP")
+
+ book5 = Book.objects.create(title="Ruby", desc="The best books for learning Ruby")
+
+ author1 = Author.objects.create(first_name="Dominic", last_name="S")
+
+ author2 = Author.objects.create(first_name="Emily", last_name="Dickinson")
+
+ author3 = Author.objects.create(first_name="Fyodor", last_name="Dostoevsky")
+
+ author4 = Author.objects.create(first_name="William", last_name="Shakespeare")
+
+ author5 = Author.objects.create(first_name="Lau", last_name="Tzu")
+
+book1 = Book.objects.get(id=1)
+book1.title = "C#"
+book1.save()
+
+changeAuthor = Author.objects.get(id=4)
+changeAuthor.first_name = "Bill"
+changeAuthor.save()
+
+Assign the first author to the first 2 books
+  author1.books.add(book1)
+  author1.books.add(book2)
+
+Assign the second author to the first 3 books
+  book1.writer.add(author2)
+  book2.writer.add(author2)
+  book3.writer.add(author2)
+
+Assign the third author to the first 4 books
+  author3.books.add(book1)
+  author3.books.add(book2)
+  author3.books.add(book3)
+  author3.books.add(book4)
+
+Assign the fourth author to the first 5 books (or in other words, all the books)
+author4.books.add(book1)
+  author4.books.add(book2)
+  author4.books.add(book3)
+  author4.books.add(book4)
+
+Retrieve all the authors for the 3rd book
+  book5 = Book.objects.get(id=5)
+  author4.books.add(book5)
+  book3.writer.all()
+    <QuerySet [<Author: <Author object: Emily (2)>, <Author: <Author object: Fyodor (3)>, <Author: <Author object: Bill (4)>]>
+
+Query: Remove the first author of the 3rd book
+  book3.writer.remove(author2)
+  book3.writer.all()
+<QuerySet [<Author: <Author object: Fyodor (3)>, <Author: <Author object: Bill (4)>]>
+
+Query: Add the 5th author as one of the authors of the 2nd book
+ author5.books.add(book2)
+ book2.writer.all()
+<QuerySet [<Author: <Author object: Dominic (1)>, <Author: <Author object: Emily (2)>, <Author: <Author object: Fyodor (3)>, <Author: <Author object: Bill (4)>, <Author: <Author object: Lau (5)>]>
+
+Query: Find all the books that the 3rd author is part of
+author3.books.all()
+<QuerySet [<Book: <Book object: C# (1)>, <Book: <Book object: Java (2)>, <Book: <Book object: Python (3)>, <Book: <Book object: PHP (4)>]>
+
+Query: Find all the authors that contributed to the 5th book
+ book5.writer.all()
+<QuerySet [<Author: <Author object: Bill (4)>]>
