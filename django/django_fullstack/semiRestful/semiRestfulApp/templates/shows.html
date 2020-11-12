@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Network</th>
+      <th>Release-date</th>
+      <th>Action</th>
+    </tr>
+    {% for showObj in allShows %}
+    <tr>
+      <td>{{ showObj.id }}</td>
+      <td>{{ showObj.name}}</td>
+      <td>{{showObj.network}}</td>
+      <td>{{ showObj.release_date }}</td>
+      <td><a href="/shows/{{showObj.id}}">Show |</a><a href="/shows/{{showObj.id}}/edit">Edit |</a><a href="/shows/{{showObj.id}}/destroy">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </table><br>
+  <a href="/shows/new">Add a new show</a>
+</body>
+</html>
