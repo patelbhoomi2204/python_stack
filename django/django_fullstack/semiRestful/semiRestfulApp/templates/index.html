@@ -12,22 +12,27 @@
     <h1>Add a new show</h1>
     <a href="/shows">go back</a><br>
   </div>
+  {% if messages %}
+    {% for message in messages %}
+      <p class="message">{{message}}</p>
+    {% endfor %}
+  {% endif %}
   <form action="/createShow" method="POST">
     {% csrf_token %}
     <label for="title">Title:</label><br>
-    <input type="text" id="title" name="title" value=""><br><br>
+    <input type="text" id="title" name="title" value="" ><br><br>
     <div class = "ntrel">
       <div class="nt">
         <label for="network">Network:</label><br>
-        <input type="text" id="ntework" name="network" value="">
+        <input type="text" id="ntework" name="network" value="" >
       </div>
       <div class="rel">
         <label for="rel">Release Date:</label><br>
-        <input type="date" id="rel" name="rel" value=""><br><br>
+        <input type="date" id="rel" name="rel" value="" ><br><br>
       </div>
     </div>
     <label for="Desc">Description:</label><br>
-    <textarea id="desc" name="desc" value=""></textarea><br><br>
+    <textarea id="desc" name="desc" value="" ></textarea><br><br>
     <input type="submit" value="Create">
   </form>
 </body>

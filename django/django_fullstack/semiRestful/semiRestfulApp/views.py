@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.contrib import messages
 from .models import *
 
 def newShow(request):
@@ -12,6 +13,11 @@ def shows(request):
     return render(request, "shows.html", context)
 
 def createShow(request):
+    errorFromValidator = Show.objects.createShowValidator(request.POST)
+    if len(errorFromValidator)>0:
+        for key, value in errorFromValidator.items():
+            messages.error(request, value)
+        return redirect('/shows/new')
     newShow = Show.objects.create(name=request.POST['title'], network=request.POST['network'], release_date=request.POST['rel'], Description=request.POST['desc'])
     return redirect(f"/shows/{newShow.id}")
 

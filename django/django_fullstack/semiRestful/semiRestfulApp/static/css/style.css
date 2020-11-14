@@ -30,3 +30,7 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+.message {
+  color: red;
+}
