@@ -1,0 +1,14 @@
+body {
+  margin-top: 40px;
+}
+.content {
+  display: flex;
+}
+
+.login {
+  margin-left: 100px;
+}
+
+p {
+  color: red;
+}
